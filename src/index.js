@@ -2,19 +2,44 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+/**
+ * Renders a button.
+ *
+ * @param {void} - Nothing.
+ * @return {void} - Nothing.
+ */
 class Square extends React.Component {
+
+  // Initialize class state.
+  constructor(props) {
+    super(props);  // Call super() when defining constructor in subclass.
+    this.state = {
+      value: null,
+    };
+
+  }
+
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
+      // <button className="square" onClick={function() { alert('click'); }}>
+      // Arrow function syntax.
+      <button className="square" onClick={() => this.setState({value: 'X'})}>
+        {/* {this.props.value} */}
+        {this.state.value}
       </button>
     );
   }
 }
 
+/**
+ * Renders 9 squares.
+ *
+ * @param {void} - Nothing.
+ * @return {void} - Nothing.
+ */
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square value={i} />;
   }
 
   render() {
@@ -43,6 +68,12 @@ class Board extends React.Component {
   }
 }
 
+/**
+ * Renders a board.
+ *
+ * @param {void} - Nothing.
+ * @return {void} - Nothing.
+ */
 class Game extends React.Component {
   render() {
     return (
